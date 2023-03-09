@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        picture{
+            display: inline-flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+        }
+        img{
+            width: 100px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>user</h1>
+    <div id="app">
+    </div>
+    <script>
+        const app = document.getElementById('app');
+        const Avatar = params => {
+            console.log(params);
+            const src = `https://randomuser.me/api/portraits/lego/${params.id}.jpg`
+            return `
+            <picture>
+                <img src="${src}"/>
+                <em>${params.name}</em>
+            </picture>`
+        }
+        app.innerHTML += Avatar({id: 3, name: "luis"})
+        app.innerHTML += Avatar({id: 4, name: "rafa"})
+    </script>
+</body>
+</html>
