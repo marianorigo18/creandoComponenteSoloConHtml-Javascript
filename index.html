@@ -24,6 +24,7 @@
     <form>
         <label>Choose a user:</label>
         <select name="users" id="users">
+            <option value="">Seleccione Personaje</option>
             <option value="1">martin</option>
             <option value="2">marcos</option>
             <option value="3">rafael</option>
@@ -36,19 +37,21 @@
     <div id="app">
     </div>
     <script>
-        const app = document.getElementById('app');
+        //Variables
+        const app = document.getElementById('app'); 
         const form = document.querySelector('form');
+        const arrayUsers = [];
+        //Eventos
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const id = e.target.children[1].value
             Avatar({id: id})
         })
-
-
+        //Funciones
         const Avatar = params => {
             const src = `https://randomuser.me/api/portraits/lego/${params.id}.jpg`
             const plantilla = `
-            <picture>
+            <picture id="${params.id}">
                 <img src="${src}"/>
             </picture>`
             app.innerHTML += plantilla
