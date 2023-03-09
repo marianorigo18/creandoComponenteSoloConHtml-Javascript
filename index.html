@@ -24,11 +24,7 @@
     <form>
         <label>Choose a user:</label>
         <select name="users" id="users">
-            <option value="">Seleccione Personaje</option>
-            <option value="1">martin</option>
-            <option value="2">marcos</option>
-            <option value="3">rafael</option>
-            <option value="4">nico</option>
+            <!-- <option value="">Seleccione Personaje</option> -->
           </select>
           <input type="submit" value="enviar">
     </form>
@@ -37,17 +33,43 @@
     <div id="app">
     </div>
     <script>
+        //Data
+        const usersData = [
+            {name: "martin"},
+            {name: "lucas"},
+            {name: "ian"},
+            {name: "rom"},
+            {name: "milton"},
+            {name: "rufus"},
+            {name: "yellow"},
+            {name: "red"},
+        ]
         //Variables
         const app = document.getElementById('app'); 
         const form = document.querySelector('form');
-        const arrayUsers = [];
+        const opcionUser = document.querySelector('#users');
+
         //Eventos
+        document.addEventListener('DOMContentLoaded', () => {
+            llenarSelect();
+        })
+
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             const id = e.target.children[1].value
             Avatar({id: id})
         })
         //Funciones
+        function llenarSelect(){
+            for (let index = 0; index <= 10; index++) {
+                const option = document.createElement('option')
+                option.value = index;
+                option.textContent = usersData[index].name;
+                option.id = index;
+                opcionUser.appendChild(option)
+            }
+        }
+
         const Avatar = params => {
             const src = `https://randomuser.me/api/portraits/lego/${params.id}.jpg`
             const plantilla = `
