@@ -56,8 +56,8 @@
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const id = e.target.children[1].value
-            Avatar({id: id})
+            const value = e.target.children[1].value
+            Avatar({id: value})
         })
         //Funciones
         function llenarSelect(){
@@ -65,7 +65,7 @@
                 const option = document.createElement('option')
                 option.value = index;
                 option.textContent = usersData[index].name;
-                option.id = index;
+                option.id = usersData[index].name;
                 opcionUser.appendChild(option)
             }
         }
@@ -75,6 +75,7 @@
             const plantilla = `
             <picture id="${params.id}">
                 <img src="${src}"/>
+                <em>${params.id}</em>
             </picture>`
             app.innerHTML += plantilla
         }
